@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI情绪卡牌 - 温暖陪伴</title>
+    <link rel="stylesheet" href="emotion-cards.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部标题区 -->
+        <header class="header">
+            <h1 class="title">AI情绪卡牌·心屿</h1>
+            <p class="subtitle">以卡牌为镜，照见内心</p>
+        </header>
+
+        <!-- 问题输入区 -->
+        <section class="input-section">
+            <div class="input-wrapper">
+                <label class="input-label">💭 说说你的烦恼</label>
+                <textarea 
+                    class="question-input" 
+                    id="questionInput" 
+                    placeholder="请输入10-100字的问题，我会为你抽卡解读..."
+                    rows="4"></textarea>
+                <div class="input-hint" id="inputHint">0/100字</div>
+            </div>
+            <div class="actions-section">
+                <div class="spread-section">
+                    <label class="spread-label">选择牌阵</label>
+                    <div class="spread-options">
+                        <button class="spread-btn active" data-spread="single">单张牌</button>
+                        <button class="spread-btn" data-spread="three">三张牌</button>
+                    </div>
+                </div>
+                <div class="shuffle-section">
+                    <button class="shuffle-btn" id="shuffleBtn">
+                        洗牌
+                    </button>
+                </div>
+                <div class="interpret-section">
+                    <button class="primary-btn" id="interpretBtn">
+                        开始解读
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 卡牌展示区 -->
+        <section class="cards-section" id="cardsSection">
+            <!-- 画框容器 -->
+            <div class="frames-container" id="framesContainer">
+                <!-- 画框将通过JS动态生成 -->
+            </div>
+            <!-- 卡牌容器 -->
+            <div class="cards-container" id="cardsContainer">
+                <!-- 卡牌将通过JS动态生成 -->
+            </div>
+        </section>
+
+        <!-- AI解读区 -->
+        <section class="interpretation-section" id="interpretationSection">
+            <div class="interpretation-header">
+                <h2 class="interpretation-title">解读结果</h2>
+            </div>
+            <div class="interpretation-content" id="interpretationContent">
+                <div class="placeholder">
+                    <p>抽卡后点击"开始解读"按钮查看解读结果</p>
+                </div>
+            </div>
+            <div class="feedback-section" id="feedbackSection">
+                <p class="feedback-label">解读如何？</p>
+                <div class="feedback-buttons">
+                    <button class="feedback-btn" data-feedback="accurate">准</button>
+                    <button class="feedback-btn" data-feedback="interesting">有点意思</button>
+                    <button class="feedback-btn" data-feedback="not-relevant">不相关</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部信息 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">© 2026 AI情绪卡牌 | 温暖陪伴</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 加载动画 -->
+    <div class="loading" id="loading">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">
+                <p class="loading-title">正在处理...</p>
+                <p class="loading-status" id="loadingStatus">请稍候</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 反馈弹窗 -->
+    <div class="modal" id="feedbackModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>感谢反馈</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <p>谢谢，你的反馈对我很重要！</p>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" id="modalConfirm">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="emotion-cards.js"></script>
+</body>
+</html>
