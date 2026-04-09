@@ -447,7 +447,7 @@ async function generateInterpretation() {
         }, 3000);
         
         // 调用后端API
-        const response = await fetch('/api/interpret', {
+        const response = await fetch('api/interpret', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
