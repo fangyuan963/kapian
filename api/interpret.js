@@ -35,22 +35,27 @@ ${cards.map((card, index) =>
 ).join('\n')}
 
 请开始解读：`;
-
+  console.log("KEY是否存在:", !!process.env.OPENAI_API_KEY);
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("https://oa.api2d.net/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: prompt }],
         temperature: 0.7,
       }),
     });
 
     const data = await response.json();
+    console.log("返回数据:", data);
+
+if (!data.choices) {
+  throw new Error(JSON.stringify(data));
+}
 
     return res.status(200).json({
       interpretation: data.choices[0].message.content,
@@ -60,4 +65,5 @@ ${cards.map((card, index) =>
     console.error(error);
     return res.status(500).json({ error: '我还在想…再试试吧' });
   }
+  
 }
